@@ -19,10 +19,14 @@ const db = require("./app/models");
 //   })
 
 
-
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to thendo's application." });
 });
+
+
+
+require("./app/routes/turorial.routes")(app);
+// set port, listen for requests
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
