@@ -1,10 +1,18 @@
+require('dotenv').config()
+const dbConfig = require("./config/db.config.js");
 const express = require("express");
+const sequelizec = require("sequelize");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
+const router = express.Router();
+
 var corsOptions = {
   origin: "http://localhost:8081"
 };
+
+
+
 app.use(cors(corsOptions));
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
@@ -13,19 +21,22 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // simple route
 
 
-const db = require("./app/models");
+// const db = require("./app/models/indexh");
+// db.sequelize.sync();
 // db.sequelize.sync({ force: true }).then(() => {
 //     console.log("Drop and re-sync db.");
-//   })
-
+//   }) 
 
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to thendo's application." });
 });
 
+app.use((err,req,res)=>{
+  console.log(err);
+})
 
-
-require("./app/routes/turorial.routes")(app);
+// app.use('/tutorial',require('./app/routes/tutorials.js'));
+// require("./app/routes/turorial.routes")(app);
 // set port, listen for requests
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
