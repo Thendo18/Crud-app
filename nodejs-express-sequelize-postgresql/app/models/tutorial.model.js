@@ -1,5 +1,10 @@
-module.exports = (sequelize, Sequelize) => {
-    const Tutorial = sequelize.define("tutorial", {
+const Sequelize = require('sequelize');
+const DataTypes = Sequelize;
+const sequelizeConnection = require("../../config/db.config.js");
+
+
+
+    const Tutorial = sequelizeConnection.define("tutorials", {
       id:{
         type:DataTypes.INTEGER,
         primaryKey:true,
@@ -26,5 +31,6 @@ module.exports = (sequelize, Sequelize) => {
         defaultValue: Sequelize.NOW
       }
     });
-    return Tutorial;
-  };
+
+
+    module.exports = Tutorial;

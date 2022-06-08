@@ -4,7 +4,7 @@ const router = Router();
 
 //Add a tutorial
 // router.post('/addTutorial', tutorialController.addTutorial);
-router.post('/addTutorial', tutorialController.createPost);
+router.post('/addTutorial', tutorialController.addTutorial);
 // //Delete a tutorial
 // router.delete('/deleteTutorial/:id', tutorialController.deleteTutorial);
 
@@ -18,6 +18,6 @@ router.post('/addTutorial', tutorialController.createPost);
 // router.get('/getOneTutorial/:id', tutorialController.getOnetutorial)
 // // app.use('/tutorial',require('./app/routes/tutorials.js'));
 
-router.get('/getAllTutorial', (req, res) => res.send('Welcome'))
+router.get('/getAllTutorial', tutorialController.getAllTutorial);
 
 module.exports = router;
