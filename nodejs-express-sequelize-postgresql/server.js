@@ -5,7 +5,8 @@ const sequelizec = require("sequelize");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-const router = express.Router();
+// const router = express.Router();
+const tutorials = require("./app/routes/tutorials.js");
 
 var corsOptions = {
   origin: "http://localhost:8081"
@@ -31,14 +32,17 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to thendo's application." });
 });
 
-app.use((err,req,res)=>{
-  console.log(err);
-})
 
+// app.use('/api/tutorials', tutorials);
 // app.use('/tutorial',require('./app/routes/tutorials.js'));
 // require("./app/routes/turorial.routes")(app);
 // set port, listen for requests
 // set port, listen for requests
+
+app.use((err,req,res)=>{
+  console.log(err);
+})
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);

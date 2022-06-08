@@ -10,9 +10,9 @@ module.exports.titleController = {
       const tutorialtitle = req.params.tutorialtitle;
 
       //query from title
-      const title = await sequelizeConnection.query(`select t.title_id,title_name,title_desc,c.course_name 
-              from title t,tutorial c 
-              where t.tutorial_id = c.tutorial_id 
+      const title = await sequelizeConnection.query(`select title_id,title_name,title_desc, course_name 
+              from tutorials 
+              where tutorial_id = c.tutorial_id 
               AND c.tutorial_title='${tutorialtitle}' order by t.title_id`);
 
       if(!title[0].length) {
