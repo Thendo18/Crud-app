@@ -1,10 +1,10 @@
-// const { Router } = require("express");
-// const tutorialController = require("../controllers/tutorialController");
-// const router = Router();
+const { Router } = require("express");
+const tutorialController = require("../controllers/tutorialController");
+const router = Router();
 
-// //Add a tutorial
+//Add a tutorial
 // router.post('/addTutorial', tutorialController.addTutorial);
-
+router.post('/addTutorial', tutorialController.createPost);
 // //Delete a tutorial
 // router.delete('/deleteTutorial/:id', tutorialController.deleteTutorial);
 
@@ -18,4 +18,6 @@
 // router.get('/getOneTutorial/:id', tutorialController.getOnetutorial)
 // // app.use('/tutorial',require('./app/routes/tutorials.js'));
 
-// module.exports = router;
+router.get('/getAllTutorial', (req, res) => res.send('Welcome'))
+
+module.exports = router;

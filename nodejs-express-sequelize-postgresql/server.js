@@ -5,7 +5,7 @@ const sequelizec = require("sequelize");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-// const router = express.Router();
+const router = express.Router();
 const tutorials = require("./app/routes/tutorials.js");
 
 var corsOptions = {
@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
 });
 
 
-// app.use('/api/tutorials', tutorials);
+app.use('/api/tutorials', tutorials);
 // app.use('/tutorial',require('./app/routes/tutorials.js'));
 // require("./app/routes/turorial.routes")(app);
 // set port, listen for requests
@@ -51,3 +51,4 @@ app.listen(PORT, () => {
 
 
 
+module.exports = app;
