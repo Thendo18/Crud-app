@@ -1,18 +1,13 @@
-const Tutorial = require('..//models/tutorial.model');
+const Tutorial = require("..//models/tutorial.model");
 const sequelizeConnection = require("../../config/db.config.js");
-
 
 const addTutorial = async (req, res) => {
   try {
-
-  
-    // CONNECT TO THE DATABASE
+    // CONNECT TO THE bodyBASE
     await sequelizeConnection.authenticate();
 
     // SYNC THE USER MODEL TO THE USERS TABLE
     Tutorial.sync({ alter: true });
-
-
 
     // // const add = await models.Tutorial.add(req.body);
     const create = await Tutorial.create(req.body);
@@ -20,21 +15,17 @@ const addTutorial = async (req, res) => {
       create,
     });
   } catch (error) {
-    return res.status(500).json({error: error.message})
+    return res.status(500).json({ error: error.message });
   }
-}
+};
 
 const getAllTutorial = async (req, res) => {
   try {
-
-  
-    // CONNECT TO THE DATABASE
+    // CONNECT TO THE bodyBASE
     await sequelizeConnection.authenticate();
 
     // SYNC THE USER MODEL TO THE USERS TABLE
     Tutorial.sync({ alter: true });
-
-
 
     // // const add = await models.Tutorial.add(req.body);
     const findAll = await Tutorial.findAll(req.body);
@@ -42,45 +33,32 @@ const getAllTutorial = async (req, res) => {
       findAll,
     });
   } catch (error) {
-    return res.status(500).json({error: error.message})
+    return res.status(500).json({ error: error.message });
   }
-}
+};
 
-
-//get getOneTutorial by id
-const getOnetutorial = async (req, res) => {
+//getOneTutorial
+const getOneTutorial = async (req, res) => {
+  const id = req.params.id;
   try {
-    const { id } = req.params;
-    const getOneTutorial = await models.getOneTutorial.findOne({
-      where: { id: $1 },
-      // include: [
-      //   {
-      //     model: models.Comment,
-      //     as: 'comments',
-      //     include: [
-      //      {
-      //       model: models.User,
-      //       as: 'author',
-      //      }
-      //     ]
-      //   },
-      //   {
-      //     model: models.User,
-      //     as: 'author'
-      //   }
-      // ]
+    // CONNECT TO THE bodyBASE
+    await sequelizeConnection.authenticate();
+
+    // SYNC THE USER MODEL TO THE USERS TABLE
+    Tutorial.sync({ alter: true });
+
+    // // const add = await models.Tutorial.add(req.body);
+    const findByPk = await Tutorial.findByPk(id);
+    return res.status(201).json({
+      findByPk,
     });
-    if (getOneTutorial) {
-      return res.status(200).json({ getOneTutorial });
-    }
-    return res.status(404).send('getOneTutorial with the specified ID does not exists');
   } catch (error) {
-    return res.status(500).send(error.message);
+    return res.status(500).json({ error: error.message });
   }
-}
+};
 
 module.exports = {
   addTutorial,
   getAllTutorial,
-  getOnetutorial
-}
+  getOneTutorial,
+};
