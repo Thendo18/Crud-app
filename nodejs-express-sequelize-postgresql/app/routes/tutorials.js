@@ -15,7 +15,8 @@ router.post('/addTutorial', tutorialController.addTutorial);
 // router.get('/getAllTutorial', tutorialController.getAllTutorial);
 
 // //Gets One tutorial
-// router.get('/getOneTutorial/:id', tutorialController.getOnetutorial)
+router.get('/getOneTutorial/:id', tutorialController.getOnetutorial)
+// router.get('/posts/:postId', tutorialcontrollers.getPostById);
 // // app.use('/tutorial',require('./app/routes/tutorials.js'));
 
 router.get('/getAllTutorial', tutorialController.getAllTutorial);
