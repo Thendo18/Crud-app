@@ -72,8 +72,6 @@ const updateTutorial = async (req, res) => {
 
     // SYNC THE USER MODEL TO THE tutorials TABLE
     Tutorial.sync({ alter: true });
-
-    // // const add = await models.Tutorial.add(req.body);
     const update = await Tutorial.update(req.body, {
       where: {
         id: req.params.id,
@@ -87,9 +85,36 @@ const updateTutorial = async (req, res) => {
 
   }
 }
+
+
+//delete Tutorial
+const deleteTutorial = async (req, res) => {
+  try {
+    // const id = req.params.id;
+    // CONNECT TO THE bodyBASE
+    await sequelizeConnection.authenticate();
+
+    // SYNC THE USER MODEL TO THE tutorials TABLE
+    Tutorial.sync({ alter: true });
+    
+    const destroy = await Tutorial.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    return res.status(201).json({
+      destroy,
+    });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+}
+
+
 module.exports = {
   addTutorial,
   getAllTutorial,
   getOneTutorial,
   updateTutorial,
+  deleteTutorial,
 };

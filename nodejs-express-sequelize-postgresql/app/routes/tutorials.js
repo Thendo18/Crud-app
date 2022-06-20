@@ -7,7 +7,7 @@ router.post('/addTutorial', tutorialController.addTutorial);
 
 
 //Delete a tutorial
-// router.delete('/deleteTutorial/:id', tutorialController.deleteTutorial);
+router.delete('/deleteTutorial/:id', tutorialController.deleteTutorial);
 
 
 // Updates a tutorial 
