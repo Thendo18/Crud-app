@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
 });
 
 
-app.use('/api/tutorials', tutorials);
+app.use('/api', tutorials);
 // app.use('/tutorial',require('./app/routes/tutorials.js'));
 // require("./app/routes/turorial.routes")(app);
 // set port, listen for requests

@@ -11,7 +11,6 @@ const sequelizeConnection = new Sequelize( process.env.DATABASE_URL, {
   }
 } );
 
-
 sequelizeConnection
   .authenticate()
   .then(() => {
