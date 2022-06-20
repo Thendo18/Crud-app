@@ -11,12 +11,11 @@ router.post('/addTutorial', tutorialController.addTutorial);
 
 
 // Updates a tutorial 
-// router.put('/updateTutorial/:id', tutorialController.updateTutorial);
+router.put('/updateTutorial/:id', tutorialController.updateTutorial);
 
 
 
-//Gets One tutorial
-// router.get('/getOneTutorial/:id', tutorialController.getOneTutorial);
+//Gets One tutorial by id
 router.get('/getOneTutorial/:id', tutorialController.getOneTutorial);
 
 //Gets All tutorial

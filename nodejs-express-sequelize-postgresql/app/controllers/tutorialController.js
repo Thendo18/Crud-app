@@ -62,26 +62,34 @@ const getOneTutorial = async (req, res) => {
   }
 };
 
-// const getPostById = async (req, res) => {
-//   // const id = req.params.id;
-//   try {
-  
-  
-//     const findOne = await Tutorial.findOne(req.params.id);
 
-//     if (findOne) {
-//       return res.status(200).json({ post });
-//     }
-//     return res.status(404).send('Post with the specified ID does not exists');
-//   } catch (error) {
-//     return res.status(500).send(error.message);
-//   }
-// }
+//update Tutorial
+const updateTutorial = async (req, res) => {
+  try {
+    // const id = req.params.id;
+    // CONNECT TO THE bodyBASE
+    await sequelizeConnection.authenticate();
 
+    // SYNC THE USER MODEL TO THE tutorials TABLE
+    Tutorial.sync({ alter: true });
 
+    // // const add = await models.Tutorial.add(req.body);
+    const update = await Tutorial.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    return res.status(201).json({
+      update,
+    });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
 
+  }
+}
 module.exports = {
   addTutorial,
   getAllTutorial,
   getOneTutorial,
+  updateTutorial,
 };
