@@ -15,7 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     AddTutorialComponent,
     TutorialDetailsComponent,
-    TutorialsListComponent
+    TutorialsListComponent,
+
   ],
   imports: [
     BrowserModule,
