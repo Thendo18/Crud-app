@@ -12,6 +12,21 @@ const baseURL = 'http://localhost:8080/api';
   providedIn: 'root'
 })
 export class TutorialService {
+  findByPk(title: string) {
+    throw new Error('Method not implemented.');
+  }
+  getAll() {
+    throw new Error('Method not implemented.');
+  }
+  deleteAll() {
+    throw new Error('Method not implemented.');
+  }
+  get(id: any) {
+    throw new Error('Method not implemented.');
+  }
+  create(data: { title: string; description: string; }) {
+    throw new Error('Method not implemented.');
+  }
   delete: any;
 
 oneTutorial: any;
